@@ -26,7 +26,6 @@ public class ForexSchedule {
 
 
     @Scheduled(cron = "0 0 18 * * ?") // trigger at 18:00 per day.
-    @Bean
     public void getDairyForexData() throws JsonProcessingException {
 
         RestTemplate restTemplate = new RestTemplate();
