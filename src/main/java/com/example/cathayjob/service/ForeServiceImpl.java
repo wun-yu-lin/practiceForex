@@ -29,9 +29,15 @@ public class ForeServiceImpl implements ForexService {
 
     @Override
     public ForexResultVO getForexResultsByPara(ForexPostDto forexPostDto) throws QueryParameterErrorException {
+
+        //轉換 String to LocalDate 型別
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        if(forexPostDto.getStartDate().length() != 10 || forexPostDto.getEndDate().length() != 10){
+            throw new QueryParameterErrorException("日期格式不符");
+        }
         LocalDate startDate = LocalDate.parse(forexPostDto.getStartDate(), formatter);
         LocalDate endDate = LocalDate.parse(forexPostDto.getEndDate(), formatter);
+
         //檢查日期區間
         if (startDate.isAfter(endDate)) {
             throw new QueryParameterErrorException("日期區間不符");
@@ -44,20 +50,19 @@ public class ForeServiceImpl implements ForexService {
         }
 
 
-        //轉換成API 需要的格式
+        //call dao layer to get data
         List<ForexModel> forexModelList =  forexDao.getForexDataListByDateAndCurrency(startDate, endDate, forexPostDto.getCurrency());
+
+        //轉換資料格式為 VO 需要的格式
         ArrayList<ForexDataVO> forexModelArrayList = new ArrayList<>(forexModelList.size());
         DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyyMMdd");
         for (ForexModel forexModel: forexModelList) {
             ForexDataVO forexDataVO = new ForexDataVO();
             String parseDate = forexModel.getDate().format(formatter2);
             forexDataVO.setDate(parseDate);
-            if (forexPostDto.getCurrency().equals("usd")) {
-                forexDataVO.setUsd(String.valueOf(forexModel.getValue()));
-                forexModelArrayList.add(forexDataVO);
-            }
+            forexDataVO.setUsd(String.valueOf(forexModel.getValue()));
+            forexModelArrayList.add(forexDataVO);
         }
-
         ForexResultVO forexResultVO = new ForexResultVO();
         StatusVO statusVO = new StatusVO();
         statusVO.setCode("0000");

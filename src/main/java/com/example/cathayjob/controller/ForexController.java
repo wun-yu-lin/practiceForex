@@ -31,27 +31,26 @@ public class ForexController {
         ForexResultVO forexResultVO = forexService.getForexResultsByPara(forexPostDto);
 
         return ResponseEntity.status(HttpStatus.OK).body(forexResultVO);
-
     }
 
-    @PostMapping("/insert")
-    public ResponseEntity<StatusVO> insertForex(
-            @RequestBody ForexModel forexModel
-    ) throws MongoDbSaveErrorException {
-
-        if(forexService.insertForexData(forexModel)){
-            StatusVO statusVO = new StatusVO();
-            statusVO.setCode("0000");
-            statusVO.setMessage("success");
-            return ResponseEntity.status(HttpStatus.OK).body(statusVO);
-        }else{
-            StatusVO statusVO = new StatusVO();
-            statusVO.setCode("E001");
-            statusVO.setMessage("Insert data failed");
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(statusVO);
-        }
-
-
-
-    }
+//    @PostMapping("/insert")
+//    public ResponseEntity<StatusVO> insertForex(
+//            @RequestBody ForexModel forexModel
+//    ) throws MongoDbSaveErrorException {
+//
+//        if(forexService.insertForexData(forexModel)){
+//            StatusVO statusVO = new StatusVO();
+//            statusVO.setCode("0000");
+//            statusVO.setMessage("success");
+//            return ResponseEntity.status(HttpStatus.OK).body(statusVO);
+//        }else{
+//            StatusVO statusVO = new StatusVO();
+//            statusVO.setCode("E001");
+//            statusVO.setMessage("Insert data failed");
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(statusVO);
+//        }
+//
+//
+//
+//    }
 }

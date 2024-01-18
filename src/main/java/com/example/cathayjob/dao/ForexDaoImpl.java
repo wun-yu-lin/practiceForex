@@ -38,7 +38,7 @@ public class ForexDaoImpl implements ForexDao{
 
     @Override
     public List<ForexModel> getForexDataListByDateAndCurrency(LocalDate startDate, LocalDate endDate, String currency) {
-        Query query = new Query(Criteria.where("date").gte(startDate).lte(endDate));
+        Query query = new Query(Criteria.where("date").gte(startDate).lte(endDate).and("currency").is(currency));
         List<ForexModel> forexModelList = mongoTemplate.find(query, ForexModel.class);
         return forexModelList;
     }
