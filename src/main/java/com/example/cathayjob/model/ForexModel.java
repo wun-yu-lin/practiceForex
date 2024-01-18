@@ -1,10 +1,9 @@
-package com.example.cathayjob.dao;
+package com.example.cathayjob.model;
 
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @Document(collection = "forex")

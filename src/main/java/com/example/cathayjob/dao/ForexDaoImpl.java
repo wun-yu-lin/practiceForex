@@ -1,13 +1,13 @@
 package com.example.cathayjob.dao;
 
 import com.example.cathayjob.exception.MongoDbSaveErrorException;
+import com.example.cathayjob.model.ForexModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
 

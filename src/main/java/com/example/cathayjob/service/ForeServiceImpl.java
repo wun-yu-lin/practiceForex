@@ -1,7 +1,7 @@
 package com.example.cathayjob.service;
 
 import com.example.cathayjob.dao.ForexDao;
-import com.example.cathayjob.dao.ForexModel;
+import com.example.cathayjob.model.ForexModel;
 import com.example.cathayjob.dto.ForexPostDto;
 import com.example.cathayjob.exception.MongoDbSaveErrorException;
 import com.example.cathayjob.exception.QueryParameterErrorException;
@@ -10,12 +10,10 @@ import com.example.cathayjob.vo.ForexResultVO;
 import com.example.cathayjob.vo.StatusVO;
 import org.springframework.stereotype.Component;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.SimpleFormatter;
 
 @Component
 public class ForeServiceImpl implements ForexService {

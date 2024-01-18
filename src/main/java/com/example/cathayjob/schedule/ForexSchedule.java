@@ -1,7 +1,7 @@
 package com.example.cathayjob.schedule;
 
 
-import com.example.cathayjob.dao.ForexModel;
+import com.example.cathayjob.model.ForexModel;
 import com.example.cathayjob.exception.MongoDbSaveErrorException;
 import com.example.cathayjob.service.ForexService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -29,7 +29,7 @@ public class ForexSchedule {
         //get data from api
         String url = "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates";
         String s =  restTemplate.getForObject(url, String.class);
-        assert s != null;
+        if (s == null){throw new RuntimeException("date is null from api");}
         s = s.replaceAll("/", "");
         s = s.toLowerCase();
 

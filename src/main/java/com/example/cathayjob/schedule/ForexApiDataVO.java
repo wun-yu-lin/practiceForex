@@ -1,9 +1,6 @@
 package com.example.cathayjob.schedule;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-
-import java.time.LocalDate;
 
 @Data
 public class ForexApiDataVO {
