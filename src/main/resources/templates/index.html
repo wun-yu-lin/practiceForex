@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Forex dairy</title>
+</head>
+<body>
+	<h1>國泰世華 JAVA engineer 線上作業</h1>
+	<p>forex API</p>
+	<label for="startDate">Start Date:</label>
+	<input type="date" id="startDate" name="startDate">
+
+	<label for="endDate">End Date:</label>
+	<input type="date" id="endDate" name="endDate">
+
+	<label for="currency">Currency:</label>
+	<select id="currency">
+		<option value="usd">USD/NTD</option>
+	</select>
+
+	<button id="button">Submit Request</button>
+	<p>資料如下：</p>
+	<div id="result"></div>
+</body>
+
+<script th:src="@{/js/index.js}"></script>
+</html>
