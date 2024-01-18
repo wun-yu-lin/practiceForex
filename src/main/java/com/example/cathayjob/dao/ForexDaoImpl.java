@@ -28,6 +28,7 @@ public class ForexDaoImpl implements ForexDao{
         if(forexModel == null){throw new MongoDbSaveErrorException("沒有提供數值儲存進 DB, 導致錯誤");}
         Query query = new Query(Criteria.where("date").is(forexModel.getDate()));
         ForexModel result = mongoTemplate.findOne(query, ForexModel.class);
+        //如資料庫無重複資料則寫入
         if (result == null) {
             mongoTemplate.insert(forexModel, "forex");
             return true;
