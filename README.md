@@ -29,6 +29,7 @@
   ```
 
   ### 建立 MongoDB Atlas
+  [可參考此資料](https://www.mongodb.com/docs/atlas/getting-started/)
   1. 建立 MongoDB database cluster
   2. Database access 設定
   3. 建立 forex 名稱 database
@@ -54,8 +55,69 @@
 
 
   ## 運行專案
-  nohup java -jar CathayJob-0.0.1-SNAPSHOT.jar &
+  nohup java -jar target/CathayJob-0.0.1-SNAPSHOT.jar &
 
 
   ```
 
+  ## 以下為專案資料夾結構
+  1. Controller-service-DAO 三層式架構
+  2. 使用 POJO
+
+  ```bash
+  ├── pom.xml
+  ├── src
+  │   ├── main
+  │   │   ├── java
+  │   │   │   └── com
+  │   │   │       └── example
+  │   │   │           └── cathayjob
+  │   │   │               ├── CathayJobApplication.java
+  │   │   │               ├── controller
+  │   │   │               │   ├── ForexController.java
+  │   │   │               │   └── HtmlController.java
+  │   │   │               ├── dao
+  │   │   │               │   ├── ForexDao.java
+  │   │   │               │   └── ForexDaoImpl.java
+  │   │   │               ├── dto
+  │   │   │               │   └── ForexPostDto.java
+  │   │   │               ├── exception
+  │   │   │               │   ├── ControllerException.java
+  │   │   │               │   ├── MongoDbSaveErrorException.java
+  │   │   │               │   └── QueryParameterErrorException.java
+  │   │   │               ├── model
+  │   │   │               │   └── ForexModel.java
+  │   │   │               ├── schedule
+  │   │   │               │   ├── ForexApiDataVO.java
+  │   │   │               │   └── ForexSchedule.java
+  │   │   │               ├── service
+  │   │   │               │   ├── ForeServiceImpl.java
+  │   │   │               │   └── ForexService.java
+  │   │   │               └── vo
+  │   │   │                   ├── ForexDataVO.java
+  │   │   │                   ├── ForexResultVO.java
+  │   │   │                   └── StatusVO.java
+  │   │   └── resources
+  │   │       ├── application.properties
+  │   │       ├── static
+  │   │       │   └── js
+  │   │       │       └── index.js
+  │   │       └── templates
+  │   │           └── index.html
+  │   └── test
+  │       └── java
+  │           └── com
+  │               └── example
+  │                   └── cathayjob
+  │                       ├── CathayJobApplicationTests.java
+  │                       ├── controller
+  │                       │   └── ForexControllerTest.java
+  │                       └── schedule
+  │                           └── ForexScheduleTest.java
+  └── target
+
+
+
+
+
+  ```
