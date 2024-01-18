@@ -7,7 +7,7 @@
 
   ## 專案講解
   ### 使用環境及工具
-  - 採用 Java 語言的 Spring boot 框架，串接第三方 API，將資料存入 MongoDB Atlas，Junit 5 撰寫 Unit test & Integration test
+  - 採用 Java 17 語言的 Spring boot 3.1.0 框架，串接第三方 API，將資料存入 MongoDB Atlas，Junit 5 撰寫 Unit test & Integration test
 
   ### 如何運行此專案 (使用 maven 建置)
   1. 已經部署在 Linux 幾台中，網址上方提供
@@ -16,7 +16,46 @@
   ### Clone 專案
   ```bash
   # 透過 git clone 專案到主機任意路徑下
-  git clone https://github.com/
+  git clone https://github.com/wun-yu-lin/practiceForex.git
   ```
+
+  ### 設定 application.properties
+  ```preperties
+  spring.task.scheduling.pool.size=1
+  spring.data.mongodb.uri=mongodb+srv://<UserName>:<Password>@<Cluster>.mongodb.net/forex
+  spring.data.mongodb.database=forex
+  management.endpoints.web.exposure.include=scheduledtasks
+
+  ```
+
+  ### 建立 MongoDB Atlas
+  1. 建立 MongoDB database cluster
+  2. Database access 設定
+  3. 建立 forex 名稱 database
+
+
+  ### maven 建置專案
+  ```bash
   
+  ## 安裝 maven, 以 macOS 為例
+  brew install maven
+
+  ## cd 到專案檔案位置
+  cd /Users/linwunyu/Documents/GitHub/CathayJob
+
+  ## 編譯專案
+  mvn compile
+ 
+  ## 執行測試
+  mvn test
+
+  ## 打包專案
+  mvn package
+
+
+  ## 運行專案
+  nohup java -jar CathayJob-0.0.1-SNAPSHOT.jar &
+
+
+  ```
 
