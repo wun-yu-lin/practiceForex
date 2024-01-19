@@ -1,7 +1,7 @@
 # cathay-bank-simple-demo
 
-- [點此測試 API ](http://123.241.19.224/)
-- [點此確認 schedule endpoint: /actuator/scheduledtasks ](http://123.241.19.224/actuator/scheduledtasks)
+- [點此測試 API ](http://123.241.19.224:8080/)
+- [點此確認 schedule endpoint: /actuator/scheduledtasks ](http://123.241.19.224:8080/actuator/scheduledtasks)
 
 - 此專案是針對與國泰銀行公司申請的線上作業：
 
